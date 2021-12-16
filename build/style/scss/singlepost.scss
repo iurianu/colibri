@@ -1,0 +1,219 @@
+@import 'parts/defaults';
+@import 'parts/header';
+@import 'parts/footer';
+
+
+.item-hero {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: calc(100vh - 90px);
+    h1 {
+        color: #FFF;
+        font-size: 48px;
+        line-height: 1.1em;
+        font-family: 'Prompt', sans-serif;
+        @include media-min-768px {
+            font-size: 54px;
+        }
+        @include media-min-992px {
+            font-size: 90px;
+        }
+        @include media-min-1200px {            
+            font-size: 120px;            
+        }
+    }
+    h3 {
+        color: #FFF;
+        font-size: 22px;
+        font-weighT: 300;
+        line-height: 2rem;
+    }
+}
+
+
+.item-section {
+    h5 {
+        color: $lightgrey;
+    }
+    p, blockquote {
+        color: $lightgrey;
+        font-weight: 300;
+        a {
+            font: inherit;
+        }
+    }
+    ul {
+        padding: 0;
+        li {
+            color: $lightgrey;
+            position: relative;
+            padding-left: 0.5rem;
+            font-weighT: 300;
+            &:before {
+                position: absolute;
+                content: "\2022";
+                color: $theme-color-bright;
+                left: -0.25rem;
+                bottom: 0rem;
+            }
+        }
+    }
+    #content-area {
+        picture {
+            width: 100%;
+            height: auto;
+            img {
+                max-width: 100%;
+            }
+        }
+        h4 {
+            font-size: 55px;
+            color: $theme-color-dark;
+        }  
+        p {
+            color: $lightgrey;
+            font-weight: 300;
+            line-heihgt: 1.5rem;
+        }
+    }
+    @include media-max-992px {
+        #content-area {
+            h4 {
+                font-size: 48px;
+                line-height: 1;                
+            }
+        }
+    }
+    @include media-max-768px {
+        #content-area {
+            picture {
+                max-width: 95%;
+                margin: 0 auto;
+            }
+            blockquote {
+                min-height: 65vmax;
+                display: flex;
+                flex-direction: column;
+                place-content: center;                
+            }
+            h4 {
+                font-size: 40px;
+                text-align: center;
+            }
+        }
+    }
+    @include media-min-768px {
+        ul {
+            column-count: 2;
+        }
+        #content-area {
+            picture {
+                width: 50%;
+            } 
+            blockquote {
+                max-width: 50%;
+            }
+        }
+        .item-section {
+            &:nth-of-type(2n+2) {
+                flex-direction: row-reverse !important;
+            }
+        }
+    }
+    @include media-min-1200px {
+        ul {
+            //max-width: 75%;
+            column-count: 3
+        }
+    }
+}
+
+#referral {
+    .btn {
+        &.referral-button {
+            min-width: 125px;
+            background-color: $theme-color-bright;
+            color: #FFF;
+            &:hover, &:focus {
+                background-color: $theme-color-dark;
+            }
+        }
+    }
+}
+
+%before-mix {
+    position: absolute;
+    font-family: "Font Awesome 5 Free", "Font Awesome", "FontAwesome";
+    top: -0.15rem;
+    content: "\f104";
+}
+
+.siblings {
+    ul {
+        li {
+            height: 30vw;
+            cursor: pointer;
+            position: relative;
+            background-size: cover;
+            background-repeat: no-repeat;
+            a {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-wrap: wrap;
+                flex-direction: column;
+                place-content: center;
+                visibility: hidden;               
+                transition: visibility .5s ease-in;
+                h4 {
+                    font-size: 40px;
+                    font-weight: 700;
+                    color: #FFF;
+                    transition: padding 1s linear;
+                    position: relative; 
+                    padding: 0;
+                    transition: padding .5s linear;
+                    &:before {
+                        @extend %before-mix;
+                    }
+                }
+            }
+            &.prev {
+                a {
+                    h4 {
+                        padding-right: 2rem;
+                        &:before {
+                            left: -2rem;                                
+                        }
+                    }
+                }
+            }
+            &.next {
+                a {
+                    h4 {
+                        padding-left: 2rem;
+                        &:before {
+                            right: -2rem;
+                            transform: rotate(180deg);
+                        }
+                    }
+                }
+            }            
+            &:hover {
+                opacity: 0.7;
+                a {
+                    visibility: visible; 
+                    font: inherit;
+                    text-decoration: none;
+                    h4 {
+                        padding: 0;
+                    }
+                }
+            }
+        }
+    }
+}

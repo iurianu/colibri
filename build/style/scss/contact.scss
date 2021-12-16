@@ -1,0 +1,144 @@
+@import 'parts/defaults';
+@import 'parts/header';
+@import 'parts/footer';
+
+/* Reset browser input arrow design */
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number],input[type=date] {
+  -moz-appearance: textfield;
+}
+
+.bootstrap-select .btn:focus {
+    outline: none !important;
+}
+
+::placeholder, 
+::-ms-input-placeholder {
+    color: $theme-color-bright;
+    opacity: 1;
+}
+
+:focus {
+  outline: none!important;
+}
+
+.form-control {    
+    &:focus {
+        border-color: $theme-color-bright;
+        box-shadow: 0 0 0 0.2rem #e6e2d3;
+    }
+    &::placeholder, &::-ms-input-placeholder {
+        color: $theme-color-bright;
+        opacity: 1;
+    }
+    &:valid {
+        color: $theme-color-bright;
+    }
+    &:invalid {
+        color: red;
+    }
+}
+
+.form-check {
+    label {
+        color: $theme-color-dark;
+    }
+    .form-check-input:checked {
+        background-color: $theme-color-bright !important;
+    }
+}
+
+button {
+    &.btn-primary {
+        background-color: $theme-color-dark;
+        border-color: $theme-color-dark;
+        padding: 0.5rem 1rem;
+        color: #FFF;
+        font-weight: 300;
+        letter-spacing: 1.2;
+        &:hover {
+            background-color: $theme-color-bright;
+            border-color: $theme-color-bright;
+        }
+    }
+}
+
+main {
+    .page-section {
+        min-height: 45vh;
+        h1 {
+            color: #FFF;
+        }
+        p {
+            font-size: 17px;
+            font-weight: 300;
+            line-height: 2;
+        }
+        &#hero {
+            background-color: $theme-color-dark;
+            p {
+                color: #FFF;
+            }
+        }
+    }
+    h2 {
+        color: $theme-color-dark;
+    }
+    ul {
+        &[itemprop=location] {
+            li {
+                position: relative;
+                padding-left: 1.5rem;
+                padding-bottom: 1.5rem;
+                font-weight: 300;
+                font-size: 17px;
+                &:before {
+                    font-family: "Font Awesome 5 Free"; 
+                    font-weight: 900;
+                    color: $theme-color-bright;
+                    position: absolute;
+                    left: -2ch;
+                    top: 0;
+                }
+                &[itemprop=name] {
+                    &:before {
+                        content: "\F08D";
+                    }
+                }
+                &[itemprop="telephone"] {
+                    &:before {
+                        content: "\F095";
+                        transform: rotate(90deg);
+                    }
+                }
+                &[itemprop=email] {
+                    &:before {
+                        content: "\F0E0";
+                    }
+                }
+                a {
+                    color: $theme-color-dark;
+                    font: inherit;
+                    font-weighT: 400;
+                    &:hover {
+                        color: $theme-color-bright;
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+    }
+    @include media-min-576px {
+        .page-section {
+            p {
+                font-size: 22px;
+            }            
+        }
+    }
+}

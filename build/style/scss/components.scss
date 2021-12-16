@@ -1,0 +1,34 @@
+@import 'parts/defaults';
+@import 'parts/header';
+@import 'parts/footer';
+
+%button-styles {
+    background-color: rgb(73, 73, 75);
+    color: #FFF;
+    border-radius: .5rem;
+    font-size: 16px;
+    line-height: 5ch;
+    width: 150px;
+    &:hover, &:focus {
+        background-color: $theme-color-bright;
+        color: #FFF;
+    }    
+}
+
+.page-section {
+    background-color: $theme-color-dark;
+    color: #FFF;
+    line-height: 1.5;
+    &#hero {
+        border-bottom: 3px inset #000;
+    }        
+    .btn {
+        @extend %button-styles;
+    }
+    &#sitemap {
+        a[itemprop=url] {
+            width: fit-content;
+        }
+    }
+}
+
