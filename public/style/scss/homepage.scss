@@ -1,0 +1,133 @@
+@import 'parts/defaults';
+@import 'parts/header';
+@import 'parts/footer';
+
+header {
+    background-color: #FFF;
+    .navbar-light {
+        .navbar-collapse {
+            .nav-item {
+                .nav-link {
+                    color: $theme-color-dark;
+                }
+            }
+        }
+    }
+    @include media-max-992px {
+        .navbar-light {
+            .navbar-toggler {
+                .navbar-toggle-line {
+                    background-color: $theme-color-dark;
+                }
+            }
+            .navbar-collapse {
+                .nav-item {
+                    .nav-link {
+                        color: #FFF;
+                    }
+                }
+            }            
+        }
+    }
+}
+
+main {
+    &#homepage-atf {
+        background-color: #FFF;
+        .page-section {
+            min-height: calc(100vh - 120px);
+            .row {
+                height: 100%;
+                place-content: center;
+            }
+            h1 {
+                color: $theme-color-dark;
+                cursor: pointer;
+                &:hover {
+                    color: $theme-color-bright;
+                }
+            }
+            p {
+                font-weight: 300;
+                line-height: 2;
+                font-size: 17px;
+                line-height: 1.5em;
+            }
+            a {
+                &.btn {
+                    color: #FFF;
+                    background-color: $theme-color-dark;
+                    border-radius: 5px;
+                    width: 225px;
+                    font-size: 16px;
+                    line-height: 45px;
+                    &:hover {
+                        background-color: $theme-color-bright;
+                        outline: none !important;   
+                    }
+                }
+            }
+            &:first-of-type {
+                min-height: calc(100vh - 90px);
+                background-color: #FFF;
+                p {
+                    color: $theme-color-dark;
+                }
+            }
+            &:nth-of-type(2) {
+                background-color: #ec8e24;
+                color: #FFF;
+                h2 {
+                    &:hover {
+                        color: #FFF;
+                    }
+                    .point {
+                        color: #FFF;
+                    }
+                }
+            }
+            &:nth-of-type(3) {
+                background-color: #ebebeb;
+            }
+            &:nth-of-type(4) {
+                background-color: #fbedda;
+            }
+            .point {
+                color: $theme-color-bright;
+            }
+            .img-fluid {
+                max-width: 560px;
+            }
+            @include media-max-992px {
+                .row {
+                    position: relative;
+                    * {
+                        z-index: 2;
+                    }
+                    figure {
+                        position: absolute;
+                        width: 100%;
+                        height: 80%;
+                        bottom: 25%;
+                        left: 0;
+                        z-index: 1;
+                        opacity: 0.2;
+                        .img-fluid {
+                            display: block;                            
+                            margin: 0 auto;
+                        } 
+                    }
+                }
+                @include media-min-576px {
+                    .row {
+                        figure {
+                            .img-fluid {
+                                //max-width: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+        }        
+    }
+}

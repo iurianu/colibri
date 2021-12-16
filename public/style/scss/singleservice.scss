@@ -1,0 +1,122 @@
+@import 'parts/defaults';
+@import 'parts/header';
+@import 'parts/footer';
+
+footer {
+    margin-top: -3rem;
+}
+
+.service-section {
+    * {
+        scroll-behavior: smooth;
+    }
+    header {
+        position: relative;
+        @extend %full-width;
+        height: auto;
+        background-color: transparent;        
+        h1 {
+            margin-bottom: 0;
+            font-size: 40px;
+            text-align: left;
+            width: 100%;
+            padding-left: 1rem;
+        }        
+    }
+    blockquote {      
+        font-size: 1rem;
+        font-weight: 300;
+        line-height: 1.25;  
+        color: #888;
+    } 
+    footer {
+        min-height: auto;
+        &.section-footer {
+            background-color: inherit;
+            p {
+                color: $theme-color-dark;
+            }
+        }
+    }
+    @include media-max-992px {
+        header {
+            z-index: 1 !important;
+        }
+    }    
+    @include media-min-992px {
+        blockquote {
+            line-height: 1.5rem;
+        }
+    }
+}
+
+.service-page {
+    position: relative;
+    margin-top: -90px;
+    padding-bottom: 3rem;
+    @include media-min-768px {
+        .content-box {
+            margin-bottom: 1.2rem;      
+            max-width: 45vw;
+            transition: all 0.5s ease-in;
+            &.floater {
+                position: fixed;
+                padding-bottom: 0;
+                &.maxed {
+                    margin-bottom: 0;
+                    top: auto;
+                    blockquote {
+                        //height: 6rem;
+                        overflow: hidden;
+                    }
+                }                
+                h1 {
+                    width: 100%;
+                    background-color: #FFF;
+                    margin-top: 3rem;
+                }
+            }
+        }        
+    }
+    .artboard {
+        //height: 100vh;
+        //overflow-y: scroll;
+        overflow-x: hidden;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+}
+
+.items {
+    &.service-section {
+        .item {
+            flex-direction: column;
+        }
+        blockquote {
+            * {
+                @extend %text-center;
+            }
+            h2 {
+                color: $theme-color-dark;
+            }
+        }
+        picture {
+        	img {
+        		max-width: 100%;
+        	}
+        }
+    }
+    @include media-min-768px {
+        &.service-section {
+            .item {
+                flex-direction: row;
+                &:nth-of-type(2n+2) {
+                    flex-direction: row-reverse;
+                }            
+            }            
+        }
+    }
+}

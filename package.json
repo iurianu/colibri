@@ -1,0 +1,71 @@
+{
+  "name": "ColibriStudios",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "https:\/\/colibri3.colibridesign.ro\/frontend",
+  "dependencies": {
+    "@apollo/client": "^3.5.5",
+    "@fortawesome/free-regular-svg-icons": "^5.15.4",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@icon/elegant-icons": "^0.0.1-alpha.4",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "axios": "^0.24.0",
+    "cors": "^2.8.5",
+    "dangerously-set-html-content": "^1.0.9",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "gh-pages": "^3.2.3",
+    "graphql": "^16.0.1",
+    "node-sass": "^7.0.0",
+    "node-sass-chokidar": "^1.5.0",
+    "nodemailer": "^6.7.2",
+    "npm-run-all": "^4.1.5",
+    "npm-uninstall": "^1.0.0",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-helmet": "^6.1.0",
+    "react-markdown": "^7.1.1",
+    "react-router-dom": "^6.0.2",
+    "react-scripts": "4.0.3",
+    "web-vitals": "^1.0.1"
+  },
+  "scripts": {
+    "start-js": "react-scripts start",
+    "start": "npm-run-all -p watch-css start-js",
+    "build": "npm run build-css && react-scripts build",
+    "build:staging": "npm run build",
+    "build-css": "node-sass-chokidar --include-path ./node_modules ./public/style/scss -o ./public/style",
+    "watch-css": "npm run build-css && node-sass-chokidar ./public/style/scss -o ./public/style -w -r --source-map true --source-map-embed",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "deploy": "npm run build && gh-pages -d build"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "react-dotenv": {
+    "whitelist": [
+      "REACT_APP_STRAPI_URL",
+      "REACT_APP_CLIENT_URL",
+      "REACT_APP_EMAIL_SERVER_URL"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

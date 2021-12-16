@@ -1,0 +1,180 @@
+@import 'parts/defaults';
+@import 'parts/header';
+@import 'parts/footer';
+
+.page-section {
+    min-height: calc(100vh - 90px);   
+    .row {
+        height: 100%;
+        place-content: center;
+        justify-content: flex-start;
+    }
+    h1 {
+        color: #FFF;
+    }
+    h2 {
+        font-size: 75px;
+    }
+    blockquote {
+        color: #FFF;               
+        font: inherit;
+        p {
+            font-size: 17px;
+            font-weight: 300;
+            line-height: 2;                
+        }
+    }        
+    a {
+        &.btn {
+            color: #FFF;
+            background-color: $theme-color-dark;
+            border: none;
+            border-radius: 5px;
+            width: 225px;
+            font-size: 18px;
+            line-height: 45px;
+            &:hover, &:active {
+                box-shadow: 0 0 0 0 transparent;
+                background-color: $theme-color-bright;
+                outline: none !important;   
+            }
+        }
+    }
+    &:first-of-type {
+        background-color: $theme-color-dark; 
+        min-height: 0;
+    }
+    &:nth-of-type(2) {
+        blockquote {
+            color: $theme-color-dark;
+        }            
+    }
+    &:nth-of-type(3) {
+        background-color: #a3a3a3;
+        .row {
+            place-content: center;
+        }
+        h2 {
+            color: #FFF;
+        }
+        a {
+            &.btn {
+                background-color: $theme-color-bright;
+                &:hover {
+                    background-color: $theme-color-dark;
+                }
+            }
+        }
+    }
+    &:nth-of-type(2n+2) {
+        .row {
+            flex-direction: row-reverse;
+        }        
+    }  
+    @include media-min-576px {
+        blockquote {
+            p {
+                font-size: 22px;
+            }
+        }
+    }
+}
+
+#structure {
+    dl {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        font-weight: 700;
+        text-align: center;
+        padding: 0 1.25rem;
+        dt {
+            @extend %pos-relative;
+            @extend %auto-margin;
+            width: 250px;
+            height: 250px;
+            font-size: 3.5rem;
+            line-height: 200px;            
+            margin-bottom: 1ex;
+            border-radius: 50%;
+            padding: 1.5ex 0;
+            transition: background 0.5s ease;
+        }
+        dd {
+            @extend %display-block;
+            @extend %full-width;
+            @extend %center-align;
+            font-size: 1rem;
+            line-height: 1rem;
+            font-weight: 500;
+        }  
+    }        
+    i.ei {
+        width: 1%;
+        color: $theme-color-bright;
+        top: 3.5rem;
+        right: -0.75rem;
+        font-size: 17px;
+        line-height: 2ex; 
+        &:last-of-type {
+        	display: none !important;
+        }               
+    } 
+    @include media-max-992px {
+        dl {
+            dt {
+                background-color: #FFF;
+                border: 2px groove $theme-color-bright;
+                color: $theme-color-dark;  
+            }
+        }
+    }    
+    @include media-min-992px {
+        dl {
+            flex-direction: column;
+            dt {
+                cursor: pointer;
+                width: 150px;
+                height: 150px;
+                border: 1px solid $theme-color-bright;
+                line-height: 100px;
+                &:hover {
+                    background-color: $theme-color-bright;
+                    color: #FFF;                    
+                    transition: background 0.5s ease-in-out;
+                }           
+            }
+        }
+    }
+    @include media-min-1200px {
+        dl {
+            dt {
+                width: 180px;
+                height: 180px;
+                line-height: 135px;    
+            }
+        }      
+    }    
+}
+
+.lower-section {
+    min-height: 20vh;
+    .row {
+        height: 100%;
+        place-content: center;
+    }
+    &#nest {
+        height: auto;
+        .row {
+            place-content: baseline;
+        }
+    }
+    &#lightbox {
+        height: auto;
+    }
+}
+
+#nest,
+#lightbox {
+    display: none !important;
+}

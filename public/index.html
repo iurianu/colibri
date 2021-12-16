@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport"     content="width=device-width, initial-scale=1" />
+    <meta name="theme-color"  content="#000000" />
+    <meta name="description"  content="Colibri Studios" />
+    <meta name="robots"       content="index, follow" />
+    <meta name="googlebot"    content="noarchive" />
+    
+    <title>Colibri Studios Iaşi - Agenţie de publicitate</title>
+    
+    <!-- Links & Definitions -->
+    <link rel="shortcut icon"   href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="canonical"       href="https://colibridesign.ro/" />
+    <link rel="shortlink"       href="https://colibridesign.ro/" />
+    
+    <!-- Fonts & Stylesheets -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Prompt:wght@700&display=swap" />    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" />
+    <link rel="stylesheet" href="https://unpkg.com/@icon/elegant-icons/elegant-icons.css" />
+    <!-- / Fonts & Stylesheets -->
+    
+    <!-- Social Media Graph -->
+    
+    <meta name="twitter:card"       content="summary" />
+    <meta name="twitter:site"       content="@iurianu" />
+    <meta property="og:type"        content="website" />
+    <meta property="og:locale"      content="ro_RO" />
+    
+    <!-- / Social Media Graph -->    
+
+  </head>
+
+  <body class="row m-0">
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root" class="container-fluid">
+        <!-- Site content comes here -->
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/react-popper/dist/index.umd.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
+    <script>
+        
+        jQuery(document).on('change', function( $ ) {
+            
+            /* Set expand properties on navbar */
+            if ( $('.navbar-toggler').attr('aria-expanded') == 'false') {
+                $('.navbar-expand-lg').css('width', '100%');
+            } else {
+                $('.navbar-expand-lg').css('width', 'auto');
+            }               
+        })  
+
+        jQuery(document).ready( function( $ ) {
+            
+            /* Remove class show from navbar on page change */
+            $('#navbarSupportedContent').on( 'click', function() {
+                $(this).removeClass('show');
+                $('.navbar-toggler').attr('aria-expanded', 'false');
+            })
+            
+            /* Add class sticky to navbar */
+            let num = 90; // number of pixels before modifying style  
+            let w_height = $(window).height();
+            let b_height = $('body').height();
+            let f_height = $('footer').height();
+            
+            let f_offset = 580;
+            let space = b_height - f_height;
+            
+            $(window).bind('scroll', function () {
+                if ($(window).scrollTop() > num) {
+                    $('header').addClass('sticky');
+                    $('.content-box').addClass('floater');
+                } else {
+                    $('.content-box').removeClass('floater');
+                    $('header').removeClass('sticky');                        
+                }
+                
+                if ($(window).scrollTop() > space) {
+                    $('.content-box').addClass('maxed');
+                } else {
+                    $('.content-box').removeClass('maxed');
+                }
+            });                 
+        })
+        
+        /* Set smooth scroll behavior on window */
+        window.scrollTo({
+            top: 100,
+            left: 100,
+            behavior: 'smooth'
+        });
+        
+    </script>     
+  </body>
+</html>
