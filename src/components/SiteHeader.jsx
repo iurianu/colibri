@@ -25,7 +25,7 @@ export default function SiteHeader() {
     <header className="row navigation">
       <nav className="navbar navbar-expand container-fluid justify-content-between px-md-5 py-0">
           <NavLink className="navbar-brand col-4 col-lg-6 py-0" to="/">
-            <img className="" src={`${vars.FrontendUrl}/images/logo.svg`} alt="Logo" />
+            <img className="" src={`${vars.FrontendUrl}/images/logo.svg`} alt="Logo" width="80" height="60" />
           </NavLink>
           <div className="col-8 col-lg-6 py-lg-0">
               <nav className="navbar navbar-expand-lg navbar-light d-flex justify-content-end place-content-end py-lg-0">
