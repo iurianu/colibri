@@ -192,6 +192,21 @@ function PageContent() {
         )      
     }
 
+    function BreadcrumbList() {
+        return (
+            <>
+                <ul className="d-none" itemScope itemType="http://schema.org/BreadcrumbList">
+                <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
+                    <a itemProp="item" href={vars.FrontendUrl}><span itemProp="name">Colibri Studios</span></a>
+                    <meta itemprop="position" content="1" /></li>                       
+                <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
+                    <a itemProp="item" href={`${vars.FrontendUrl}/servicii/`}><span itemProp="name">{metaSection.title}</span></a>
+                    <meta itemprop="position" content="2" /></li>
+                </ul>
+            </>
+        )
+    }       
+
     function CtaSection() {
         return (
           <section class="container-fluid page-section d-flex flex-column text-center" id="cta-lp">
@@ -213,6 +228,7 @@ function PageContent() {
                 <html lang="ro" itemScope="itemscope" itemType={schemaLink + metaSection.schematype} />
                 <title>{metaSection.title}</title>
                 <meta property="og:description" name="description" content={metaSection.description} />
+                <meta property="og:url"                            content={`${vars.FrontendUrl}/servicii/`} />
                 <meta name="keywords" content={keywordList} />
                 <link rel="stylesheet" href="./../style/servicespage.css" />
             </Helmet>
@@ -243,6 +259,7 @@ function PageContent() {
                 </div>                     
             </section>
                 
+            <BreadcrumbList />
             <ListClients />
             <CtaSection />
 

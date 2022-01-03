@@ -203,6 +203,7 @@ const ProjectSingle = () => {
 		servicesSection = data.project.data.attributes.services,
 		contentSection 	= data.project.data.attributes.section,
 		ctaSection		= data.project.data.attributes.CTA,
+		pageAttributes	= data.project.data.attributes,
 		slug 			= data.project.data.attributes.itemId
 
 	let stateObj = {id}
@@ -244,9 +245,25 @@ const ProjectSingle = () => {
 		}
 	}
 
+	function BreadcrumbList() {
+		return (
+			<>
+	            <ul className="d-none" itemScope itemType="http://schema.org/BreadcrumbList">
+		            <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
+		            	<a itemProp="item" href={vars.FrontendUrl}><span itemProp="name">Colibri Studios</span></a>
+		            	<meta itemprop="position" content="1" /></li>
+	        		<li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
+	        			<a itemProp="item" href={`${vars.FrontendUrl}/portofoliu/`}><span itemProp="name">Portofoliu</span></a>
+	        			<meta itemprop="position" content="2" /></li>	            			
+					<li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
+						<a itemProp="item" href={`${vars.FrontendUrl}/proiect/${id}`}><span itemProp="name">{pageAttributes.name}</span></a>
+						<meta itemprop="position" content="3" /></li>
+			    </ul>
+			</>
+		)
+	}	
+
 	function GetContentSections() {
-
-
 
 		return (
 			<>
@@ -263,10 +280,10 @@ const ProjectSingle = () => {
 						/>
 
 				        <blockquote className="col-12 col-md-6 px-5 align-self-center">
-				            <h4 itemProp="name" className="pb-3">{title}</h4>
-				            <ReactMarkdown itemProp="description">
-				            	{text}
-				            </ReactMarkdown>
+				            <h4 itemProp="headline" className="pb-3">{title}</h4>
+				            <div itemProp="description">
+					            <ReactMarkdown>{text}</ReactMarkdown>
+				            </div>
 				        </blockquote>		        
 					</article>
 				))}
@@ -285,6 +302,7 @@ const ProjectSingle = () => {
 					<html lang="ro" itemScope itemType="http://schema.org/ItemPage" />
 		            <title>{metaSection.title}</title>
 		            <meta property="og:description" name="description" content={metaSection.description} />
+		            <meta property="og:url" 						   content={`${vars.FrontendUrl}/proiect/${id}`} />
 		            <meta name="keywords" content={keywordList} />
 		            <link rel="stylesheet" href="./../style/singlepost.css" />
 				</Helmet>
@@ -293,34 +311,42 @@ const ProjectSingle = () => {
 	                className="item-hero col-12 d-flex flex-column text-center justify-content-center" 
 	                style={{backgroundImage: `url('${vars.BackendUrl + identitySection.banner.data.attributes.url}')`}}
 	            >
-	                <h1>{identitySection.headline}</h1>
-	                <h3 dangerouslySetInnerHTML={{__html: identitySection.quote}} />
+	            	<meta itemProp="name" content={metaSection.title} />
+	                <h1 itemProp="headline">{identitySection.headline}</h1>
+	                <h3 itemProp="disambiguatingDescription" dangerouslySetInnerHTML={{__html: identitySection.quote}} />
 	            </section>
 
 	            <article className="item-section col-12 pt-5">
 	                <section className="row pt-5">
 	                    <div className="offset-md-1 col-12 col-md-8 pb-3 mb-5">
-	                        <h3>{identitySection.subtitle}</h3>
-	                        <blockquote className="mt-3 mb-5"  dangerouslySetInnerHTML={{__html: identitySection.blockquote}} />
-	                        <h5 className="text-uppercase pt-3 pb-2">Servicii oferite:</h5>
-	                        <ul>
+	                        <h3 itemProp="headline">{identitySection.subtitle}</h3>
+	                        <blockquote itemProp="description" className="mt-3 mb-5"  dangerouslySetInnerHTML={{__html: identitySection.blockquote}} />
+	                        <h5 itemProp="headline" className="text-uppercase pt-3 pb-2">Servicii oferite:</h5>
+	                        <ul itemProp="offers" itemScope itemType="http://schema.org/AggregateOffer">
 		                        {servicesSection.map((service, key) => {
 		                            return (
-		                                    <li key={key}>{service}</li>
+		                                    <li key={key} itemProp="itemOffered" itemScope itemType="http://schema.org/Service">
+		                                    	<span itemProp="name">{service}</span>
+		                                    </li>
 		                            )
 		                        })}   
 	                        </ul>
-	                    </div>
+	                    </div>	                    
 
                       	<div className="container-fluid" id="content-area">
 	                        
+	                        	<BreadcrumbList />
 	                        	<GetContentSections />	
                         
-	                        <div className="row flex-column justify-content-between align-items-center py-5" id="referral">
-	                            <h4 className="pt-5">{ctaSection.headline}</h4>
+	                        <div 
+	                        	itemProp="potentialAction" itemScope itemType="http://schema.org/AssessAction"
+	                        	className="row flex-column justify-content-between align-items-center py-5" 
+	                        	id="referral">
+	                            <h4 className="pt-5" itemProp="name">{ctaSection.headline}</h4>
 	                            <a 
 	                            	className="btn referral-button p-3 my-5 d-block" 
 		                            rel="nofollow noopener noreferrer" 
+		                            itemProp="target"
 		                            href={ctaSection.target} 
 	                            >
 	                            	{ctaSection.button}

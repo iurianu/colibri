@@ -1,4 +1,3 @@
-import React, { useState } from "react"
 import * as vars from './variables'
 import { NavLink } from "react-router-dom"
 

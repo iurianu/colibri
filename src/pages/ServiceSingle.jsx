@@ -80,12 +80,12 @@ function ServiceSingle() {
 		if (video.includes(extension)) {
 			return (
 		        <video 
-		            itemProp="video" itemScope="itemscope" 
+		            itemProp="associatedMedia" itemScope="itemScope" 
 		            itemType="http://schema.org/VideoObject" 
 		            autoPlay muted loop
 		            className="col-12 col-md-6 p-0"
 		        >
-		            <source itemProp="embedUrl" type="video/mp4" src={media} />
+		            <source itemProp="url" type="video/mp4" src={media} />
 		            <meta itemProp="caption" content={title} />
 	    		</video>
 			)
@@ -93,14 +93,33 @@ function ServiceSingle() {
 			return (
 	        	<picture 
 	        		className="col-12 col-md-6 p-0"	
-	        		itemProp="image" itemScope="itemscope" 
+	        		itemProp="associatedMedia" itemScope="itemScope" 
 	        		itemType="http://schema.org/ImageObject" 
 	        	>
-		        	<img itemProp="image embedUrl" src={media} alt={title} />
+		        	<img itemProp="image url" src={media} alt={title} />
+		        	<meta itemProp="caption" content={title} />
 		        </picture>			
 			)
 		}
 	}	
+
+	function BreadcrumbList() {
+		return (
+			<>
+	            <ul className="d-none" itemScope itemType="http://schema.org/BreadcrumbList">
+	            <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
+	            	<a itemProp="item" href={vars.FrontendUrl}><span itemProp="name">Colibri Studios</span></a>
+	            	<meta itemprop="position" content="1" /></li>
+        		<li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
+        			<a itemProp="item" href={`${vars.FrontendUrl}/servicii/`}><span itemProp="name">Servicii</span></a>
+        			<meta itemprop="position" content="2" /></li>	            			
+				<li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
+					<a itemProp="item" href={`${vars.FrontendUrl}/servicii/${id}`}><span itemProp="name">{pageAttributes.name}</span></a>
+					<meta itemprop="position" content="3" /></li>
+			    </ul>
+			</>
+		)
+	}
 
 	function GetContentSections() {
 
@@ -111,7 +130,7 @@ function ServiceSingle() {
 						<article 
 							key={key}
 							className="row item"
-							itemScope itemProp="exampleOfWork"                    
+							itemScope itemProp="hasPart"                    
 							itemType="http://schema.org/WebPageElement"> 
 
 							<SetMediaType 								
@@ -121,9 +140,11 @@ function ServiceSingle() {
 
 					        <blockquote className="col-12 col-md-6 px-5 align-self-center">
 					            <h4 itemProp="headline" className="pb-3">{title}</h4>
-					            <ReactMarkdown itemProp="description">
-					            	{text}
-					            </ReactMarkdown>
+					            <div itemProp="description">
+						            <ReactMarkdown>
+						            	{text}
+						            </ReactMarkdown>
+					            </div>
 					        </blockquote>
 		        
 						</article>
@@ -144,21 +165,23 @@ function ServiceSingle() {
 					<html lang="ro" itemScope itemType="http://schema.org/ItemPage" />
 		            <title>{metaSection.title}</title>
 		            <meta property="og:description" name="description" content={metaSection.description} />
+		            <meta property="og:url" 						   content={`${vars.FrontendUrl}/servicii/${id}`} />
 		            <meta name="keywords" content={keywordList} />
 		            <link rel="stylesheet" href="./../style/singleservice.css" />
 				</Helmet>
+
 		        <section className="service-section container d-flex flex-column justify-content-center justify-content-lg-start pt-lg-5">
 		            <header className="row pt-5 pb-md-3 justify-content-center">
 		                <h1 itemProp="name" className="py-5 py-md-0">{pageAttributes.headline}</h1>
 		            </header>
 		            <blockquote className="row p-2">
-		                <p itemProp="description">
-		                	{pageAttributes.blockquote}
-		                </p>
+		                <p itemProp="description">{pageAttributes.blockquote}</p>
 		            </blockquote>
 		        </section> 
+
 		        <section className="service-section items container pb-5 pt-md-5"> 
-	                        
+		        
+	                <BreadcrumbList />        
 	                <GetContentSections /> 	
 
 	            </section>

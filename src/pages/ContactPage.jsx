@@ -108,7 +108,22 @@ export default function Contact() {
 	const keywordList = metaSection.keywords.map((keyword) => keyword)
 
 	const defaultState = formSection.butondefault,
-		   activeState = formSection.buttonactive
+		    activeState = formSection.buttonactive
+
+	function BreadcrumbList() {
+		return (
+			<>
+        <ul className="d-none" itemScope itemType="http://schema.org/BreadcrumbList">
+	        <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
+	        	<a itemProp="item" href={vars.FrontendUrl}><span itemProp="name">Colibri Studios</span></a>
+	        	<meta itemProp="position" content="1" /></li>            			
+					<li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
+						<a itemProp="item" href={`${vars.FrontendUrl}/contact/`}><span itemProp="name">{metaSection.title}</span></a>
+						<meta itemProp="position" content="2" /></li>
+		    </ul>
+			</>
+		)
+	}		    
    
   return (
   	    <main className="row" id="contact">
@@ -116,6 +131,7 @@ export default function Contact() {
 						<html lang="ro" itemScope="itemscope" itemType={schemaLink + metaSection.schematype} />
             <title>{metaSection.title}</title>
             <meta property="og:description" name="description" content={metaSection.description} />
+            <meta property="og:url" 						   						 content={`${vars.FrontendUrl}/contact/`} />
             <meta name="keywords" content={keywordList} />
             <link rel="stylesheet" href="./../style/contact.css" />
         </Helmet> 
@@ -124,7 +140,9 @@ export default function Contact() {
 			<time dateTime={pageInfoSection.publishedAt} itemProp="datePublished">{pageInfoSection.publishedAt}</time>
 			<time dateTime={pageInfoSection.updatedAt}   itemProp="dateModified"> {pageInfoSection.updatedAt}  </time>
 			<meta itemProp="inLanguage" content="RO" />
-		</template>	           
+		</template>	 
+
+		<BreadcrumbList />          
 
 	    <HeroSection 
 	    	headline = {heroSection.headline}
@@ -137,12 +155,15 @@ export default function Contact() {
 	        itemProp="potentialAction"
 	        itemScope
 	        itemType="http://schema.org/CommunicateAction">
+	        <meta itemProp="target" content={`${vars.FrontendUrl}/contact/`} />
 	        <div className="row px-3 px-md-5">  	    
 		        <div className="col-12 col-lg-6 px-3 px-lg-5">
-		            <h2 className="" itemProp="name">{infoSection.headline}</h2>
-		            	<ReactMarkdown className="py-4" itemProp="description">
-		            		{infoSection.description}
-		            	</ReactMarkdown>
+		            <h2 className="" itemProp="description">{infoSection.headline}</h2>
+		            <div className="py-4" itemProp="disambiguatingDescription">
+			            	<ReactMarkdown>
+			            		{infoSection.description}
+			            	</ReactMarkdown>
+	            	</div>
 		            <ul className="p-0" 
 		                itemProp="location" 
 		                itemScope 
@@ -177,7 +198,7 @@ export default function Contact() {
 		            </ul>
 		        </div> 	    
 		        <div className="col-12 col-lg-6 px-3 py-2">
-		            <h3>{formSection.headline}</h3>
+		            <h3 itemProp="name">{formSection.headline}</h3>
 		            <form className="needs-validation" onSubmit={handleSubmit}>
 		              <div className="form-row">
 		                <div className="col-md-6 mb-3">

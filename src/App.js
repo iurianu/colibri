@@ -1,5 +1,4 @@
-import { useState, useEffect } from 'react'
-import { Navigate, BrowserRouter, Routes, Route, useParams } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client"
 
 import SiteHeader from './components/SiteHeader'

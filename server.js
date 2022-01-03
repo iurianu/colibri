@@ -10,7 +10,8 @@ app.use("/", router);
 app.listen(5000, () => console.log("Server Running"));
 
 const contactEmail = nodemailer.createTransport({
-  service: 'gmail',
+  service: 'Gmail',
+  port: 465,
   auth: {
     user: "colibridesignweb@gmail.com",
     pass: "CDW0rkPass",
@@ -34,7 +35,12 @@ router.post("/contact", (req, res) => {
     from: name,
     to: "colibridesignweb@gmail.com",
     subject: "Mesaj Contact Form",
-    html: `<p>Nume: ${name}</p><p>Email: ${email}</p><p>Telefon: ${phone}</p><p>Message: ${message}</p>`,
+    html: `<table>
+             <tr><td>Nume: </td><td>${name}</td></tr>
+             <tr><td>Email: </td><td>${email}</td></tr>
+             <tr><td>Telefon: </td><td>${phone}</td></tr>
+             <tr><td>Message: </td><td>${message}</td></tr>
+           </table>`,
   };
   contactEmail.sendMail(mail, (error) => {
     if (error) {

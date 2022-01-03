@@ -1,6 +1,7 @@
-$theme-color-dark:     var(--theme-color-dark); //#282828;
-$theme-color-bright:   var(--theme-color-light); //#f69322;
-$lightgrey:            var(--theme-light-grey); //#888;
+$theme-color-dark:     var(--theme-color-dark);  //#282828
+$theme-color-bright:   var(--theme-color-light); //#f69322
+$lightgrey:            var(--theme-light-grey);  //#888
+$theme-white:          var(--theme-color-white); //#FFF
 
 @mixin media-max-420px {
   @media (max-width: 419px)  { @content; }

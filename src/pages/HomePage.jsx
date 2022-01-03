@@ -116,6 +116,7 @@ export default function HomePage() {
 					<html lang="ro" itemScope="itemscope" itemType={schemaLink + metaSection.schematype} />
 		            <title>{metaSection.title}</title>
 		            <meta property="og:description" name="description" content={metaSection.description} />
+		            <meta property="og:url" 						   content={`${vars.FrontendUrl}`} />
 		            <meta name="keywords" content={keywordList} />
 		            <link rel="stylesheet" href="./../style/homepage.css" />
 				</Helmet>

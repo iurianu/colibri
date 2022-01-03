@@ -60,6 +60,21 @@ export default function AboutPage() {
 
 	const keywordList = metaSection.keywords.map((keyword) => keyword)
 
+	function BreadcrumbList() {
+		return (
+			<>
+	            <ul className="d-none" itemScope itemType="http://schema.org/BreadcrumbList">
+	            <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
+	            	<a itemProp="item" href={vars.FrontendUrl}><span itemProp="name">Colibri Studios</span></a>
+	            	<meta itemProp="position" content="1" /></li>            			
+				<li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
+					<a itemProp="item" href={`${vars.FrontendUrl}/noi/`}><span itemProp="name">{metaSection.title}</span></a>
+					<meta itemProp="position" content="2" /></li>
+			    </ul>
+			</>
+		)
+	}	
+
 	function GetContentSections() {
 
 		return (
@@ -106,7 +121,7 @@ export default function AboutPage() {
 		                	<>
 					            <dl 
 					            	key={key}
-					            	className="col-12 col-sm-6 offset-lg-1 col-lg-2 my-4 my-lg-0" 
+					            	className="col-12 col-sm-6 col-lg-2 my-4 my-lg-0" 
 					            	id={identifier}
 					            >
 					                <dt className="d-flex justify-content-center">{identifier}</dt>
@@ -133,6 +148,7 @@ export default function AboutPage() {
 					<html lang="ro" itemScope="itemscope" itemType={schemaLink + metaSection.schematype} />
 		            <title>{metaSection.title}</title>
 		            <meta property="og:description" name="description" content={metaSection.description} />
+		            <meta property="og:url" 						   content={`${vars.FrontendUrl}/noi/`} />
 		            <meta name="keywords" content={keywordList} />
 		            <link rel="stylesheet" href="./../style/aboutpage.css" />
 				</Helmet>
@@ -140,12 +156,13 @@ export default function AboutPage() {
 					<time dateTime={data.aboutpage.data.attributes.publishedAt} itemProp="datePublished">{data.aboutpage.data.attributes.publishedAt}</time>
 					<time dateTime={data.aboutpage.data.attributes.updatedAt}   itemProp="dateModified"> {data.aboutpage.data.attributes.updatedAt}  </time>
 					<meta itemProp="inLanguage" content="RO" />
-				</template>				
+				</template>	
+				<BreadcrumbList />			
 
 			    <HeroSection 
 			    	headline = {heroSection.headline}
 			    	quote 	 = {heroSection.quote}
-			    />				
+			    />	
 
 	            <GetContentSections />
 	            <GetSteps />

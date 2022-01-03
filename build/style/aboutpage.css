@@ -190,6 +190,9 @@ header {
       color: #FFF; }
       header.sticky .navbar-light .navbar-collapse .nav-item .nav-link:hover {
         color: var(--theme-color-light); } }
+  @media (max-width: 767px) {
+    header.sticky {
+      width: 100%; } }
 
 @keyframes animate-height {
   100% {

@@ -169,6 +169,11 @@ header {
             }
         }
     }
+    @include media-max-768px {
+        &.sticky {
+            width: 100%;
+        }
+    }
 }
 
 @keyframes animate-height {

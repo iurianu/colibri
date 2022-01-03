@@ -71,12 +71,28 @@ function StaticContent() {
 
 	const keywordList = metaSection.keywords.map((keyword) => keyword)
 
+	function BreadcrumbList() {
+		return (
+			<>
+	            <ul className="d-none" itemScope itemType="http://schema.org/BreadcrumbList">
+	            <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
+	            	<a itemProp="item" href={vars.FrontendUrl}><span itemProp="name">Colibri Studios</span></a>
+	            	<meta itemProp="position" content="1" /></li>            			
+				<li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
+					<a itemProp="item" href={`${vars.FrontendUrl}/portofoliu/`}><span itemProp="name">{metaSection.title}</span></a>
+					<meta itemProp="position" content="2" /></li>
+			    </ul>
+			</>
+		)
+	}	
+
 	return (
 		<>        
 				<Helmet>
 					<html lang="ro" itemScope="itemscope" itemType={schemaLink + metaSection.schematype} />
 		            <title>{metaSection.title}</title>
 		            <meta property="og:description" name="description" content={metaSection.description} />
+		            <meta property="og:url" 						   content={`${vars.FrontendUrl}/portofoliu/`} />
 		            <meta name="keywords" content={keywordList} />
 		            <link rel="stylesheet" href="./../style/portfolio.css" />
 				</Helmet>
@@ -88,7 +104,8 @@ function StaticContent() {
 			    <HeroSection 
 			    	headline = {heroSection.headline}
 			    	quote 	 = {heroSection.quote}
-			    />				
+			    />	
+			    <BreadcrumbList />			
 		</>
 	)
 }
@@ -123,6 +140,7 @@ function Items() {
 							backgroundImage: `url('${vars.BackendUrl + proiect.attributes.preview.data.attributes.url}')`
 						}}
 					>
+						<meta content={vars.BackendUrl + proiect.attributes.preview.data.attributes.url} itemProp="image" />
 		              	<figcaption className="justify-content-center align-items-center">
 	                  		<Link 
 	                  			to={`/proiect/${proiect.id}`}
