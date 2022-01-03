@@ -2,7 +2,7 @@ import React from 'react'
 import { useParams } from 'react-router-dom'
 import ReactMarkdown from 'react-markdown'
 import { Helmet } from "react-helmet"
-import * as vars from '../components/variables'
+import * as vars from '../variables'
 import { useQuery, gql } from '@apollo/client'
 
 

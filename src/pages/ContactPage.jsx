@@ -5,7 +5,7 @@ import ReactMarkdown from 'react-markdown'
 import { dangerouslySetInnerHTML } from 'dangerously-set-html-content'
 import { useQuery, gql } from '@apollo/client'
 import HeroSection from '../components/HeroSection'
-import * as vars from '../components/variables'
+import * as vars from '../variables'
 
 const CONTACTPAGE = gql`
 	query GetContactPage {

@@ -1,24 +1,6 @@
-import * as vars from './variables'
+import * as vars from '../variables'
 import { NavLink } from "react-router-dom"
-
-const pages = [
-	{
-		title: "Noi",
-		link: "/noi",
-	},	
-	{
-		title: "Portofoliu",
-		link: "/portofoliu",
-	},
-	{
-		title: "Servicii",
-		link: "/servicii",
-	},
-	{
-		title: "Contact",
-		link: "/contact",
-	},
-]
+import { pages } from '../variables'
 
 export default function SiteHeader() {
   return (
@@ -56,26 +38,26 @@ export default function SiteHeader() {
 const SiteMenu = () => {
 	return (
 		<>
-            <ul 
-            	className="collapse navbar-collapse justify-content-between mb-0" 
-            	id="navbarSupportedContent" 
-            	itemScope="itemscope"
-            	itemType="http://schema.org/SiteNavigationElement"
-            >
-	            {pages.map((page, key) => {
-	            	return (
-									<li key={key} itemProp="name" className="nav-item">
-										<NavLink 
-											itemProp="url"
-											to={page.link}
-											className={({ isActive }) => isActive? "nav-link active": 'nav-link'}
-										>
-											{page.title}
-										</NavLink>
-									</li>
-		          	);
-		        })}				
-            </ul>		
+      <ul 
+      	className="collapse navbar-collapse justify-content-between mb-0" 
+      	id="navbarSupportedContent" 
+      	itemScope="itemscope"
+      	itemType="http://schema.org/SiteNavigationElement"
+      >
+        {pages.map((page, key) => {
+        	return (
+						<li key={key} itemProp="name" className="nav-item">
+							<NavLink 
+								itemProp="url"
+								to={page.link}
+								className={({ isActive }) => isActive? "nav-link active": 'nav-link'}
+							>
+								{page.title}
+							</NavLink>
+						</li>
+        	);
+      })}				
+      </ul>		
 		</>
 	)
 }

@@ -60,9 +60,9 @@ footer {
         }
         &.services-list {
             display: grid;
-            grid-template-columns: 35% 65%;
+            grid-template-columns: 50% 60%;
             grid-template-rows: 2rem 2rem 2rem;
-            grid-template-rows: auto;
+            //grid-template-rows: auto;
             li {
                 width: auto;
                 &:hover {

@@ -1,5 +1,6 @@
 import React from "react";
-import * as vars from './variables'
+import * as vars from '../variables'
+import { AllServices } from '../variables'
 
 export default function Footer() {
   return (
@@ -18,26 +19,9 @@ export default function Footer() {
               </div>
               <div className="col-12 col-md-4" id="footer-column-middle">
                   <p>We are a performance marketing agency that helps companies launch, grow, and scale<span className="point">.</span></p>
-                  <ul className="services-list pl-0 pt-4" itemScope itemType="http://schema.org/SiteNavigationElement">
-                      <li itemProp="name">
-                          <a itemProp="url" rel="tag" title="Servicii" href="/services/branding">Branding</a>
-                      </li>
-                      <li itemProp="name">                          
-                          <a itemProp="url" rel="tag" title="Servicii" href="/services/digital">Digital</a>
-                      </li>
-                      <li itemProp="name">
-                          <a itemProp="url" rel="tag" title="Servicii" href="/services/marketing">Marketing</a>
-                      </li>
-                      <li itemProp="name">                          
-                          <a itemProp="url" rel="tag" title="Servicii" href="/services/randari-vizualizari-3d">Design și Vizualizări 3D</a>
-                      </li>                      
-                      <li itemProp="name">                          
-                          <a itemProp="url" rel="tag" title="Servicii" href="/services/consultanta">Consultanță</a>
-                      </li>
-                      <li itemProp="name">                          
-                          <a itemProp="url" rel="tag" title="Servicii" href="/services/proiectare-design">Proiectare și arhitectură</a>
-                      </li>
-                  </ul>
+
+                  <AllServices />
+
               </div>
               <div className="col-12 col-md-4" id="footer-column-right">
                   <figure>                                    

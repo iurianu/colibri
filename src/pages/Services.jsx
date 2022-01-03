@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import { Helmet } from "react-helmet";
 import HeroSection from '../components/HeroSection'
 import { useQuery, gql } from '@apollo/client'
-import * as vars from '../components/variables'
+import * as vars from '../variables'
 
 const SERVICES = gql`
     query GetServices {

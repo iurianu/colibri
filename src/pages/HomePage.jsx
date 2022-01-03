@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet"
 import ReactMarkdown from 'react-markdown'
 import { dangerouslySetInnerHTML } from 'dangerously-set-html-content'
 import { useQuery, gql } from '@apollo/client'
-import * as vars from '../components/variables'
+import * as vars from '../variables'
 
 const HOME = gql`
 	query GetHomepage {
