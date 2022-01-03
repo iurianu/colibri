@@ -39,7 +39,7 @@
   "scripts": {
     "start-js": "react-scripts start",
     "start": "npm-run-all -p watch-css start-js",
-    "build": "react-scripts build",
+    "build": "CI='' react-scripts build && build-css",
     "build-css": "node-sass-chokidar --include-path ./node_modules ./public/style/scss -o ./public/style",
     "watch-css": "npm run build-css && node-sass-chokidar ./public/style/scss -o ./public/style -w -r --source-map true --source-map-embed",
     "test": "react-scripts test --env=jsdom",
